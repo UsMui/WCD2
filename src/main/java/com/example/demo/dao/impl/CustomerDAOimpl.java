@@ -2,7 +2,7 @@ package com.example.demo.dao.impl;
 
 import com.example.demo.dao.CustomerDAO;
 import com.example.demo.entity.CustomerEntity;
-import com.example.demo.ulti.PersistenceUlti;
+import com.example.demo.util.PersistenceUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,18 +15,18 @@ public class CustomerDAOimpl implements CustomerDAO {
     EntityManager en;
     EntityTransaction tran;
     public CustomerDAOimpl(){
-        en = PersistenceUlti.createEntityManagerFactory().createEntityManager();
+        en = PersistenceUtil.createEntityManagerFactory().createEntityManager();
         tran = en.getTransaction();
     }
 
     @Override
     public void createCustomer(CustomerEntity customer) {
-        try{
+        try {
             tran.begin();
             en.persist(customer);
             tran.commit();
-
-        }catch (Exception ex){
+        } catch (Exception ex) {
+            System.out.printf(ex.getMessage());
             tran.rollback();
         }
 
@@ -35,13 +35,12 @@ public class CustomerDAOimpl implements CustomerDAO {
     @Override
     public List<CustomerEntity> getAllCustomer() {
         List<CustomerEntity> customers = new ArrayList<>();
-        try{
+        try {
             Query query = en.createQuery("select c from CustomerEntity c");
             return query.getResultList();
-
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return null;
+        return customers;
     }
 }
