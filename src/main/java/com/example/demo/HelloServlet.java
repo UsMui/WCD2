@@ -26,6 +26,8 @@ public class HelloServlet extends HttpServlet {
         CustomerEntity customerEntity = new CustomerEntity("T2203E FPT", 25, "B6");
         customerDAO.createCustomer(customerEntity);
         List <CustomerEntity> customerEntityList = customerDAO.getAllCustomer();
+        request.setAttribute("customers",customerEntityList);
+//        request.getRequestDispatcher()
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");

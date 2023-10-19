@@ -30,7 +30,6 @@ public class UploadFileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uploadDir = "C:\\Users\\MystUphng\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\upload";
-
         for (Part part : req.getParts()) {
             String fileName = getSubmittedFileName(part);
             if (fileName != null) {
@@ -40,7 +39,6 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
         }
-
         resp.setContentType("text/html");
         resp.getWriter().write("<html><body>");
         resp.getWriter().write("File uploaded successfully!");

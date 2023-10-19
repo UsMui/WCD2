@@ -1,7 +1,6 @@
 package com.example.demo.dao.impl;
 
 import com.example.demo.dao.StudentDAO;
-import com.example.demo.entity.CustomerEntity;
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.util.PersistenceUtil;
 

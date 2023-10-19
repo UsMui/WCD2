@@ -29,16 +29,36 @@ public class StudentServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        // Hello
-        StudentEntity studentEntity = new StudentEntity("Usm","0123456");
+
+        // Thêm dữ liệu vào cơ sở dữ liệu và truy vấn danh sách
+        StudentEntity studentEntity = new StudentEntity("AAAA", "0123456");
         studentDAO.create(studentEntity);
         List<StudentEntity> studentEntityList = studentDAO.all();
+
         PrintWriter out = resp.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + studentEntityList.toString() + "</h1>");
-        out.println("</body></html>");
+        out.println("<h1>Student List</h1>");
 
+        // Kiểm tra nếu danh sách không rỗng
+        if (!studentEntityList.isEmpty()) {
+            out.println("<table border=\"1\">");
+            out.println("<tr><th>Name</th><th>ID</th></tr>");
+
+            for (StudentEntity student : studentEntityList) {
+                out.println("<tr>");
+                out.println("<td>" + student.getName() + "</td>");
+                out.println("<td>" + student.getId() + "</td>");
+                out.println("</tr>");
+            }
+
+            out.println("</table>");
+        } else {
+            out.println("<p>No students found.</p>");
+        }
+
+        out.println("</body></html>");
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -10,7 +10,6 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Date birthday;
     private String tel;
 
     public StudentEntity() {
@@ -19,15 +18,10 @@ public class StudentEntity {
     public StudentEntity(Integer id, String name, Date birthday, String tel) {
         this.id = id;
         this.name = name;
-        this.birthday = birthday;
         this.tel = tel;
     }
 
-    public StudentEntity(String name, Date birthday, String tel) {
-        this.name = name;
-        this.birthday = birthday;
-        this.tel = tel;
-    }
+
 
     public StudentEntity(String name, String tel) {
         this.name = name;
@@ -42,9 +36,6 @@ public class StudentEntity {
         return name;
     }
 
-    public Date getBirthday() {
-        return birthday;
-    }
 
     public String getTel() {
         return tel;
