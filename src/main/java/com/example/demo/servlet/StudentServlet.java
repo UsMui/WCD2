@@ -5,6 +5,7 @@ import com.example.demo.dao.impl.StudentDaoimpl;
 import com.example.demo.entity.CustomerEntity;
 import com.example.demo.entity.StudentEntity;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,15 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
 
-@WebServlet(value = "/student-servlet")
+@WebServlet({
+        "/student-servlet",
+        "/student-servlet/delete",
+        "/student-servlet/getupdate",
+        "/student-servlet/update"
+
+
+
+})
 public class StudentServlet extends HttpServlet{
     private StudentDAO studentDAO;
 
@@ -27,41 +36,75 @@ public class StudentServlet extends HttpServlet{
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url = request.getRequestURL().toString();
+        request.setCharacterEncoding("utf-8");
+        if (url.contains("delete")){
+            String id = request.getParameter("id");
 
-        // Thêm dữ liệu vào cơ sở dữ liệu và truy vấn danh sách
-        StudentEntity studentEntity = new StudentEntity("AAAA", "0123456");
-        studentDAO.create(studentEntity);
-        List<StudentEntity> studentEntityList = studentDAO.all();
+            StudentEntity student = studentDAO.findOne(Integer.parseInt(id));
+            if (student != null) {
+                studentDAO.delete(student);
 
-        PrintWriter out = resp.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>Student List</h1>");
-
-        // Kiểm tra nếu danh sách không rỗng
-        if (!studentEntityList.isEmpty()) {
-            out.println("<table border=\"1\">");
-            out.println("<tr><th>Name</th><th>ID</th></tr>");
-
-            for (StudentEntity student : studentEntityList) {
-                out.println("<tr>");
-                out.println("<td>" + student.getName() + "</td>");
-                out.println("<td>" + student.getId() + "</td>");
-                out.println("</tr>");
             }
+        }
+        if (url.contains("getupdate")){
+            String id = request.getParameter("id");
 
-            out.println("</table>");
-        } else {
-            out.println("<p>No students found.</p>");
+            StudentEntity student = studentDAO.findOne(Integer.parseInt(id));
+            if (student != null) {
+                request.setAttribute("student", student);
+
+            }
         }
 
-        out.println("</body></html>");
+            List<StudentEntity> studentEntityList = studentDAO.all();
+            request.setAttribute("students", studentEntityList);
+            request.getRequestDispatcher("/demo.jsp").forward(request,response);
+
+    }
+
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url = request.getRequestURL().toString();
+        request.setCharacterEncoding("utf-8");
+
+        if (url.contains("update")){
+            String idd = request.getParameter("id");
+            Integer id = Integer.parseInt(idd);
+
+            String name = request.getParameter("name");
+            String tel = request.getParameter("tel");
+            StudentEntity student = new StudentEntity(id,name,tel);
+            if(id!=null&&name!=null&&tel!=null){
+                studentDAO.update(student);
+                response.sendRedirect("student-servlet");
+            }
+
+        }else{
+            String name = request.getParameter("name");
+            String tel = request.getParameter("tel");
+
+            // Validate data here
+
+            StudentEntity student = new StudentEntity(name,tel);
+            studentDAO.create(student); // Create student in the database
+            response.sendRedirect("student-servlet");
+
+
+        }
+
+
+
     }
 
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    }
+
+
+
+
+
+
 }

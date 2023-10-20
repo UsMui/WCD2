@@ -12,8 +12,6 @@ import java.util.List;
 
 public class StudentDaoimpl implements StudentDAO {
 
-
-
     EntityManager en;
     EntityTransaction tran;
 
@@ -38,14 +36,25 @@ public class StudentDaoimpl implements StudentDAO {
     public void create(StudentEntity studentEntity) {
         try {
             tran.begin();
-            en.persist(studentEntity);
-            tran.commit();
+
+            // Kiểm tra xem số điện thoại đã tồn tại chưa
+            Query query = en.createQuery("SELECT s FROM StudentEntity s WHERE s.tel = :tel");
+            query.setParameter("tel", studentEntity.getTel());
+            List<StudentEntity> resultList = query.getResultList();
+
+            if (resultList.isEmpty()) {
+                en.persist(studentEntity);
+                tran.commit();
+            } else {
+                System.out.println("Số điện thoại đã tồn tại.");
+                tran.rollback();
+            }
         } catch (Exception ex) {
-            System.out.printf(ex.getMessage());
+            System.out.println(ex.getMessage());
             tran.rollback();
         }
-
     }
+
 
     @Override
     public void update(StudentEntity studentEntity) {

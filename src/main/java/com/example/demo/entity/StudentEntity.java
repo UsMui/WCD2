@@ -28,6 +28,13 @@ public class StudentEntity {
         this.tel = tel;
     }
 
+    public StudentEntity(String name) {
+        this.name = name;
+    }
+
+    public StudentEntity(Integer id, String name, String tel) {
+    }
+
     public Integer getId() {
         return id;
     }
