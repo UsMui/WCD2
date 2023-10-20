@@ -28,6 +28,13 @@ public class StudentEntity {
         this.tel = tel;
     }
 
+    public StudentEntity(String name) {
+        this.name = name;
+    }
+
+    public StudentEntity(Integer id, String name, String tel) {
+    }
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +46,17 @@ public class StudentEntity {
 
     public String getTel() {
         return tel;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
