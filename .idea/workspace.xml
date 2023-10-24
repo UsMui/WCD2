@@ -10,15 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce25549d-753b-48ae-a71a-b2143870af1d" name="Changes" comment="assig14">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dao/RepositoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dao/RepositoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dao/StudentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/dao/impl/StudentDaoimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/dao/impl/StudentDaoimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/StudentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/entity/StudentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/servlet/StudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/servlet/StudentServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/demo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/demo.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ce25549d-753b-48ae-a71a-b2143870af1d" name="Changes" comment="cccdd" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +192,7 @@
       <workItem from="1697823035327" duration="751000" />
       <workItem from="1697854480811" duration="646000" />
       <workItem from="1697886505422" duration="10864000" />
-      <workItem from="1698144425484" duration="5213000" />
+      <workItem from="1698144425484" duration="5912000" />
     </task>
     <task id="LOCAL-00001" summary="assig">
       <option name="closed" value="true" />
@@ -250,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697823176601</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="cccdd">
+      <option name="closed" value="true" />
+      <created>1698150306079</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698150306079</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +299,8 @@
     <MESSAGE value="assig" />
     <MESSAGE value="assig2" />
     <MESSAGE value="assig14" />
-    <option name="LAST_COMMIT_MESSAGE" value="assig14" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/example/demo/dao/impl/StudentDaoimpl.java&#10;#&#9;src/main/java/com/example/demo/servlet/StudentServlet.java&#10;#&#9;src/main/webapp/demo.jsp" />
+    <MESSAGE value="cccdd" />
+    <option name="LAST_COMMIT_MESSAGE" value="cccdd" />
   </component>
 </project>
