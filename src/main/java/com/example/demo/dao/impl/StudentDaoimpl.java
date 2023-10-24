@@ -7,6 +7,7 @@ import com.example.demo.util.PersistenceUtil;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,20 @@ public class StudentDaoimpl implements StudentDAO {
         List<StudentEntity> students = new ArrayList<>();
         try {
             Query query = en.createQuery("select c from StudentEntity c");
+            return query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return students;
+    }
+
+    @Override
+    public List<StudentEntity> all(int pageNumber, int pageSize) {
+        List<StudentEntity> students = new ArrayList<>();
+        try {
+            Query query = en.createQuery("SELECT c FROM StudentEntity c");
+            query.setFirstResult((pageNumber - 1) * pageSize);
+            query.setMaxResults(pageSize);
             return query.getResultList();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -73,6 +88,16 @@ public class StudentDaoimpl implements StudentDAO {
                 // Cập nhật các trường thông tin
                 existingStudent.setName(studentEntity.getName());
                 existingStudent.setTel(studentEntity.getTel());
+                if (studentEntity.getBirthday()!=null){
+                    existingStudent.setBirthday(studentEntity.getBirthday());
+
+                }
+                if(!studentEntity.getThumbnail().isEmpty()){
+                    existingStudent.setThumbnail(studentEntity.getThumbnail());
+
+                }
+
+
                 en.merge(existingStudent);
                 tran.commit();
             } else {
@@ -103,8 +128,19 @@ public class StudentDaoimpl implements StudentDAO {
 
     }
 
+
+
     @Override
     public StudentEntity findOne(Integer id) {
         return en.find(StudentEntity.class, id);
     }
+
+    public List<StudentEntity> searchByName(String name) {
+        TypedQuery<StudentEntity> query = en.createQuery(
+                "SELECT s FROM StudentEntity s WHERE s.name LIKE :name", StudentEntity.class);
+        query.setParameter("name", "%" + name + "%");
+        return query.getResultList();
+    }
+
+
 }

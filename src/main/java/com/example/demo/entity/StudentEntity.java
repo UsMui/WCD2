@@ -11,6 +11,8 @@ public class StudentEntity {
     private Integer id;
     private String name;
     private String tel;
+    private String thumbnail;
+    private Date birthday;
 
     public StudentEntity() {
     }
@@ -33,6 +35,21 @@ public class StudentEntity {
     }
 
     public StudentEntity(Integer id, String name, String tel) {
+    }
+
+    public StudentEntity(String name, String tel, String thumbnail, Date birthday) {
+        this.name = name;
+        this.tel = tel;
+        this.thumbnail = thumbnail;
+        this.birthday = birthday;
+    }
+
+    public StudentEntity(Integer id, String name, String tel, String thumbnail, Date birthday) {
+        this.id = id;
+        this.name = name;
+        this.tel = tel;
+        this.thumbnail = thumbnail;
+        this.birthday = birthday;
     }
 
     public Integer getId() {
@@ -59,4 +76,22 @@ public class StudentEntity {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+
 }
