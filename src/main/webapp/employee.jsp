@@ -39,6 +39,11 @@
                 <button type="submit" class="btn btn-primary">Create</button>
 
             </form>
+
+            <form action="/employee-servlet" method="GET" class="d-inline">
+                <button type="submit" class="btn btn-secondary">RESET</button>
+            </form>
+
         </div>
 
 

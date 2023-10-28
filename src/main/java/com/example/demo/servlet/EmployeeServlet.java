@@ -38,7 +38,7 @@ public class EmployeeServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         if(url.contains("list")){
             int pageNumber = request.getParameter("pageNumber") != null ? Integer.parseInt(request.getParameter("pageNumber")) : 1;
-        int pageSize = request.getParameter("pageSize") != null ? Integer.parseInt(request.getParameter("pageSize")) : 3;
+        int pageSize = request.getParameter("pageSize") != null ? Integer.parseInt(request.getParameter("pageSize")) : 5;
 
 
         List<EmployeeEntity> employees = employeeDAO.all(pageNumber,pageSize);

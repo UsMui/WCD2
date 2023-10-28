@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher List</title>
+    <title>Employee List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -45,20 +45,20 @@
         </table>
         <div class="pagination">
             <c:if test="${pageNumber > 1}">
-                <a href="/employee-servlet?pageNumber=${pageNumber - 1}&pageSize=${pageSize}">Previous</a>
+                <a href="/employee-servlet/list?pageNumber=${pageNumber - 1}&pageSize=${pageSize}">Previous</a>
             </c:if>
             <c:forEach begin="1" end="${totalPages}" var="i">
                 <c:choose>
                     <c:when test="${pageNumber eq i}">
-                        <a href="/employee-servlet?pageNumber=${i}&pageSize=${pageSize}"><strong>${i}</strong></a>
+                        <a href="/employee-servlet/list?pageNumber=${i}&pageSize=${pageSize}"><strong>${i}</strong></a>
                     </c:when>
                     <c:otherwise>
-                        <a href="/employee-servlet?pageNumber=${i}&pageSize=${pageSize}">${i}</a>
+                        <a href="/employee-servlet/list?pageNumber=${i}&pageSize=${pageSize}">${i}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
             <c:if test="${pageNumber < totalPages}">
-                <a href="/employee-servlet?pageNumber=${pageNumber + 1}&pageSize=${pageSize}">Next</a>
+                <a href="/employee-servlet/list?pageNumber=${pageNumber + 1}&pageSize=${pageSize}">Next</a>
             </c:if>
         </div>
     </c:if>
