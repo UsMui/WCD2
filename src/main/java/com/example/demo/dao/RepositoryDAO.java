@@ -11,4 +11,5 @@ public interface RepositoryDAO <S> {
      void delete(S s);
      S findOne(Integer id);
 
+
 }
