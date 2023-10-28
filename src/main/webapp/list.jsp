@@ -30,7 +30,7 @@
             <tbody>
             <c:forEach var="employee" items="${employees}">
                 <tr>
-                    <td><c:out value="${employee.name}" /></td>
+                    <td><c:out value="${employee.fullname}" /></td>
                     <td><c:out value="${employee.address}" /></td>
                     <td><c:out value="${employee.birthday}" /></td>
                     <td><c:out value="${employee.position}" /></td>

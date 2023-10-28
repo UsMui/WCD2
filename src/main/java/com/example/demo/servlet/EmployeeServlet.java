@@ -41,17 +41,16 @@ public class EmployeeServlet extends HttpServlet {
         int pageSize = request.getParameter("pageSize") != null ? Integer.parseInt(request.getParameter("pageSize")) : 3;
 
 
-        List<EmployeeEntity> employeeEntities = employeeDAO.all(pageNumber,pageSize);
+        List<EmployeeEntity> employees = employeeDAO.all(pageNumber,pageSize);
         int totalEmployees = employeeDAO.all().size();
         int totalPages = (int) Math.ceil((double) totalEmployees / pageSize);
         request.setAttribute("pageNumber", pageNumber);
         request.setAttribute("pageSize", pageSize);
         request.setAttribute("totalPages", totalPages);
-        request.setAttribute("employees", employeeEntities);
+        request.setAttribute("employees", employees);
         request.getRequestDispatcher("/list.jsp").forward(request,response);
 
         }
-
         request.getRequestDispatcher("/employee.jsp").forward(request,response);
     }
 
